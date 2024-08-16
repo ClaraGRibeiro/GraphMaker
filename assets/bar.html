@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Graph Maker</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Bar</h1>
+        <form action="bar.html" method="post" id="form-bar">
+            <div class="form-group" id="quantity">
+                <label for="number-data">How many bars?</label>
+                <input type="number" name="number-data" id="number-data" min="1" required>
+            </div>
+            <div class="form-group" id="dataset"></div>
+            <p id="message"></p>
+            <button type="submit" value="submit">Submit!</button>
+        </form>
+    </main>
+    <footer>
+        <a href="https://github.com/ClaraGRibeiro/">Developed by Clara Ribeiro</a>
+    </footer>
+</body>
+<script>
+
+document.getElementById('form-bar').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const numberData = document.getElementById('number-data').value;
+    const dataset = document.getElementById('dataset');
+    const quantity = document.getElementById('quantity');
+    quantity.innerHTML = `<p>Now, enter the ${numberData} values at your dataset.<p>`;
+    for(let i=0; i<numberData; i++){
+        dataset.innerHTML += `
+            <label for="data-${i+1}">${i+1}:</label>
+            <input type="number" name="data-${i+1}" id="data-${i+1}" required>
+            <br>
+        `;
+
+    }
+    this.reset();
+});
+
+</script>
+</html>
